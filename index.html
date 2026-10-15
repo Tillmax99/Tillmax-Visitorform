@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visit TILLMAX - Booth Enquiry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#f3f3f1;--card:#fff;--ink:#14161a;--mute:#6f7480;--line:#dcdde0;--accent:#e8541e;--wa:#d32f2f;--wa-h:#b71c1c;--chip:#f3f3f1;--err:#c0392b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 Barlow,"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;min-height:100%}
+.bar{background:#14161a;color:#fff;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;padding:14px 18px;border-bottom:3px solid var(--accent)}
+.logo{font-weight:800;letter-spacing:.14em;font-size:22px}
+.logo b{color:var(--accent)}
+.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.title{max-width:480px;margin:0 auto;padding:26px 16px 0;text-align:center}
+.title h1{font-size:30px;font-weight:800;line-height:1.15}
+.title p{color:var(--mute);font-size:15px;margin-top:4px}
+main{max-width:480px;margin:16px auto 0;padding:0 16px 24px}
+form{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:24px;box-shadow:0 3px 0 var(--line)}
+.sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.field{margin-bottom:14px}
+label{display:block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+label::before{content:"";display:inline-block;width:6px;height:6px;background:var(--accent);margin-right:8px;vertical-align:1px}
+input,textarea{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:13px 16px}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,84,30,.2)}
+textarea{min-height:96px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:2px;padding:6px 13px;font:inherit;font-size:14px;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.err{color:var(--err);font-size:13px;min-height:18px;margin-top:2px}
+.btn{width:100%;font:inherit;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--wa);color:#fff;border:0;border-radius:2px;padding:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:var(--wa-h)}
+.btn:disabled{opacity:.7;cursor:wait}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.note{font-size:13px;color:var(--mute);text-align:center;margin-top:12px}
+#fb{display:none;text-align:center;margin-top:10px}
+#fb a{color:var(--wa);font-weight:600}
+.req label{text-align:center}.req .chips{justify-content:center}
+.foot{text-align:center;font-size:12px;color:var(--mute);margin-top:18px}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar"><div class="logo">TILL<b>MAX</b></div><span class="tag">Booth Enquiry</span></div>
+  <div class="title"><h1>Welcome to our booth</h1><p>The best POS system provider in Sri Lanka</p></div>
+</header>
+<main>
+<form id="f" novalidate>
+  <p class="sub">Tell us what you need and our team will reply on WhatsApp.</p>
+  <div class="field"><label for="n">Your name</label><input id="n" type="text" autocomplete="name" placeholder="e.g. John Silva" maxlength="100"><div class="err" id="e1"></div></div>
+  <div class="field"><label for="c">Contact number</label><input id="c" type="tel" inputmode="tel" autocomplete="tel" placeholder="+94 77 123 4567" maxlength="40"><div class="err" id="e2"></div></div>
+  <div class="field req"><label for="r">Your requirements</label>
+    <div class="chips" id="chips"></div>
+    <textarea id="r" placeholder="Tell us about your business and what you need..." maxlength="1000"></textarea><div class="err" id="e3"></div></div>
+  <button type="submit" class="btn" id="go"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24"/></svg>Send on WhatsApp</button>
+  <div class="note">WhatsApp will open with your message ready to send.</div>
+  <div id="fb"><a id="fl" href="#" target="_blank" rel="noopener">WhatsApp didn't open? Tap here</a></div>
+</form>
+<div class="foot">TILLMAX &bull; POS Systems &amp; Solutions</div>
+</main>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+// Firebase web app config (tillmax-visitorbooth)
+var firebaseConfig = {
+  apiKey: "AIzaSyA98AU-GLEv2Mxo4e7VKd0z3mI4nb8_4fc",
+  authDomain: "tillmax-visitorbooth.firebaseapp.com",
+  projectId: "tillmax-visitorbooth",
+  storageBucket: "tillmax-visitorbooth.firebasestorage.app",
+  messagingSenderId: "350303098833",
+  appId: "1:350303098833:web:d3d181fd34a4bcac7632f0"
+};
+var COLLECTION = "booth_leads";
+var db = null;
+try { db = getFirestore(initializeApp(firebaseConfig)); } catch (e) { console.error(e); }
+
+var P = new URLSearchParams(location.search);
+var NUM = (P.get("to") || "94718355355").replace(/\D/g, "");
+var BOOTH = P.get("booth") || "the TILLMAX booth";
+var items = [["TouchPoint POS","TouchPoint POS"],["Retail POS","Retail POS"],["Restaurant POS","Restaurant / Fast-food POS"],["POS Hardware","POS Hardware"],["Thermal Rolls","Thermal Paper Rolls"],["Get a Quote","Pricing & Quotation"],["Live Demo","Schedule Demo"]];
+var ta = document.getElementById("r"), cw = document.getElementById("chips");
+items.forEach(function (it) {
+  var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = it[0];
+  b.onclick = function () {
+    var cur = ta.value.split(",").map(function (s) { return s.trim(); }).filter(Boolean), i = cur.indexOf(it[1]);
+    if (i > -1) { cur.splice(i, 1); b.classList.remove("active"); } else { cur.push(it[1]); b.classList.add("active"); }
+    ta.value = cur.join(", ");
+  };
+  cw.appendChild(b);
+});
+
+function saveLead(d) {
+  if (!db) return Promise.resolve();
+  var save = addDoc(collection(db, COLLECTION), { name: d.name, contact: d.contact, requirements: d.req, booth: BOOTH, createdAt: serverTimestamp() });
+  var wait = new Promise(function (res) { setTimeout(res, 1500); });
+  return Promise.race([save, wait]).catch(function (e) { console.error(e); });
+}
+
+var form = document.getElementById("f"), btn = document.getElementById("go");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  var name = document.getElementById("n").value.trim(), contact = document.getElementById("c").value.trim(), req = ta.value.trim(), ok = true;
+  function se(id, bad, m) { document.getElementById(id).textContent = bad ? m : ""; if (bad) ok = false; }
+  se("e1", !name, "Enter your name."); se("e2", contact.replace(/\D/g, "").length < 7, "Enter a valid contact number."); se("e3", !req, "Tell us what you need.");
+  if (!ok) return;
+
+  var msg = "Hello, I visited " + BOOTH + ".\n\nName: " + name + "\nContact: " + contact + "\nRequirements: " + req;
+  var t = encodeURIComponent(msg), ua = navigator.userAgent;
+  var url = "https://wa.me/" + NUM + "?text=" + t;
+  var isAnd = /Android/i.test(ua), isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var fl = document.getElementById("fl"); fl.href = url;
+  var w = (!isAnd && !isIOS) ? window.open("about:blank", "_blank") : null; // open now so desktop pop-up blockers allow it
+  btn.disabled = true;
+
+  saveLead({ name: name, contact: contact, req: req }).then(function () {
+    btn.disabled = false;
+    document.getElementById("fb").style.display = "block";
+    if (isAnd) location.href = "whatsapp://send?phone=" + NUM + "&text=" + t;
+    else if (isIOS) location.href = url;
+    else if (w) w.location.href = "https://web.whatsapp.com/send?phone=" + NUM + "&text=" + t;
+  });
+});
+</script>
+</body>
+</html>
