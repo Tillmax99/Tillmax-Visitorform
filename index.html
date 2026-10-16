@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visit TILLMAX - Booth Enquiry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#f3f3f1;--card:#fff;--ink:#14161a;--mute:#6f7480;--line:#dcdde0;--accent:#e8541e;--wa:#d32f2f;--wa-h:#b71c1c;--chip:#f3f3f1;--err:#c0392b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 Barlow,"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;min-height:100%}
+.bar{background:#14161a;color:#fff;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;padding:14px 18px;border-bottom:3px solid var(--accent)}
+.logo{font-weight:800;letter-spacing:.14em;font-size:22px}
+.logo b{color:var(--accent)}
+.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.title{max-width:480px;margin:0 auto;padding:26px 16px 0;text-align:center}
+.title h1{font-size:30px;font-weight:800;line-height:1.15}
+.title p{color:var(--mute);font-size:15px;margin-top:4px}
+main{max-width:480px;margin:16px auto 0;padding:0 16px 24px}
+form{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:24px;box-shadow:0 3px 0 var(--line)}
+.sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.field{margin-bottom:14px}
+label{display:block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+label::before{content:"";display:inline-block;width:6px;height:6px;background:var(--accent);margin-right:8px;vertical-align:1px}
+input,textarea{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:13px 16px}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,84,30,.2)}
+textarea{min-height:96px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:2px;padding:6px 13px;font:inherit;font-size:14px;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.err{color:var(--err);font-size:13px;min-height:18px;margin-top:2px}
+.btn{width:100%;font:inherit;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--wa);color:#fff;border:0;border-radius:2px;padding:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:var(--wa-h)}
+.btn:disabled{opacity:.7;cursor:wait}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.note{font-size:13px;color:var(--mute);text-align:center;margin-top:12px}
+#fb{display:none;text-align:center;margin-top:10px}
+#fb a{color:var(--wa);font-weight:600}
+.req label{text-align:center}.req .chips{justify-content:center}
+.foot{text-align:center;font-size:12px;color:var(--mute);margin-top:18px}
+.bar{position:relative}
+.gear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:1px solid #3a3d44;color:#fff;width:38px;height:38px;border-radius:2px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.gear:hover{border-color:var(--accent)}.gear svg{width:20px;height:20px;fill:currentColor}
+.panel{display:none;position:fixed;inset:0;background:rgba(20,22,26,.6);z-index:20;overflow:auto;padding:16px}
+.panel.open{display:block}
+.pbox{background:#fff;max-width:440px;margin:24px auto;border:1px solid var(--line);border-top:4px solid var(--accent);padding:22px;position:relative}
+.pbox h2{font-size:22px;font-weight:800;margin-bottom:4px}
+.pbox h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:6px 0 8px}
+.pbox input{margin-bottom:8px}
+.x{position:absolute;right:10px;top:6px;background:none;border:0;font-size:28px;cursor:pointer;color:var(--mute)}
+.sbtn{font:inherit;font-weight:700;background:#14161a;color:#fff;border:0;border-radius:2px;padding:11px 16px;cursor:pointer;margin:4px 6px 0 0}
+.sbtn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+#qrbox{display:flex;justify-content:center;margin:12px 0;min-height:240px}
+#qrbox img,#qrbox canvas{max-width:100%}
+#admin{display:none}
+.pmsg{font-size:13px;color:var(--mute);margin-top:6px}
+.pbox hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+.pbox textarea{min-height:70px;margin-bottom:8px}
+.optrow{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);padding:4px 6px 4px 12px;margin-bottom:6px;font-size:15px}
+.optrow button{background:none;border:0;font-size:22px;line-height:1;color:var(--err);cursor:pointer;padding:2px 8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar"><div class="logo">TILL<b>MAX</b></div><span class="tag">Booth Enquiry</span><button type="button" class="gear" id="gear" aria-label="Settings"><svg viewBox="0 0 24 24"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1l.4 2.6h4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7"/></svg></button></div>
+  <div class="title"><h1>Welcome to our booth</h1><p>The best POS system provider in Sri Lanka</p></div>
+</header>
+<main>
+<form id="f" novalidate>
+  <p class="sub">Tell us what you need and our team will reply on WhatsApp.</p>
+  <div class="field"><label for="n">Your name</label><input id="n" type="text" autocomplete="name" placeholder="e.g. John Silva" maxlength="100"><div class="err" id="e1"></div></div>
+  <div class="field"><label for="c">Contact number</label><input id="c" type="tel" inputmode="tel" autocomplete="tel" placeholder="+94 77 123 4567" maxlength="40"><div class="err" id="e2"></div></div>
+  <div class="field req"><label for="r">Your requirements</label>
+    <div class="chips" id="chips"></div>
+    <textarea id="r" placeholder="Tell us about your business and what you need..." maxlength="1000"></textarea><div class="err" id="e3"></div></div>
+  <button type="submit" class="btn" id="go"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24"/></svg>Send on WhatsApp</button>
+  <div class="note">WhatsApp will open with your message ready to send.</div>
+  <div id="fb"><a id="fl" href="#" target="_blank" rel="noopener">WhatsApp didn't open? Tap here</a></div>
+</form>
+<div class="foot">TILLMAX &bull; POS Systems &amp; Solutions</div>
+</main>
+<div class="panel" id="panel"><div class="pbox">
+  <button type="button" class="x" id="close" aria-label="Close">&times;</button>
+  <h2>Settings</h2>
+  <div id="login">
+    <div class="pmsg" style="margin-bottom:12px">Admin sign in required.</div>
+    <input id="em" type="text" placeholder="Admin username" autocomplete="username" autocapitalize="off" spellcheck="false">
+    <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+    <button type="button" class="sbtn" id="signin">Sign in</button>
+    <div class="err" id="autherr"></div>
+  </div>
+  <div id="admin">
+    <div class="pmsg">Signed in as <b id="who"></b></div>
+    <hr>
+    <h3>Customer details</h3>
+    <button type="button" class="sbtn" id="xl">Download Excel</button><button type="button" class="sbtn alt" id="signout">Sign out</button>
+    <div class="pmsg" id="xlmsg"></div>
+    <hr>
+    <h3>Add customer manually</h3>
+    <input id="mn" type="text" placeholder="Customer name" maxlength="100">
+    <input id="mc" type="tel" placeholder="Contact number" maxlength="40">
+    <textarea id="mr" placeholder="Requirements" maxlength="1000"></textarea>
+    <input id="mb" type="text" placeholder="Booth / source (optional)" maxlength="60">
+    <button type="button" class="sbtn" id="madd">Add customer</button>
+    <div class="pmsg" id="mmsg"></div>
+    <hr>
+    <h3>Requirement options</h3>
+    <div id="optlist"></div>
+    <input id="optnew" type="text" placeholder="New option, e.g. Barcode Scanner" maxlength="60">
+    <button type="button" class="sbtn alt" id="optadd">Add option</button><button type="button" class="sbtn" id="optsave">Save options</button>
+    <div class="pmsg" id="optmsg"></div>
+    <hr>
+    <h3>Form QR code</h3>
+    <input id="qrurl" type="url" placeholder="Form link">
+    <input id="qrbooth" type="text" placeholder="Booth name (optional)">
+    <div id="qrbox"></div>
+    <button type="button" class="sbtn" id="qrmake">Create QR</button><button type="button" class="sbtn alt" id="qrdl">Download QR image</button>
+  </div>
+</div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, orderBy, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+// Firebase web app config (tillmax-visitorbooth)
+var firebaseConfig = {
+  apiKey: "AIzaSyA98AU-GLEv2Mxo4e7VKd0z3mI4nb8_4fc",
+  authDomain: "tillmax-visitorbooth.firebaseapp.com",
+  projectId: "tillmax-visitorbooth",
+  storageBucket: "tillmax-visitorbooth.firebasestorage.app",
+  messagingSenderId: "350303098833",
+  appId: "1:350303098833:web:d3d181fd34a4bcac7632f0"
+};
+var COLLECTION = "booth_leads";
+var db = null;
+var auth = null;
+try { var app = initializeApp(firebaseConfig); db = getFirestore(app); auth = getAuth(app); } catch (e) { console.error(e); }
+
+var P = new URLSearchParams(location.search);
+var NUM = (P.get("to") || "94718355355").replace(/\D/g, "");
+var BOOTH = P.get("booth") || "the TILLMAX booth";
+var DEFAULTS = [["TouchPoint POS","TouchPoint POS"],["Retail POS","Retail POS"],["Restaurant POS","Restaurant / Fast-food POS"],["POS Hardware","POS Hardware"],["Thermal Rolls","Thermal Paper Rolls"],["Get a Quote","Pricing & Quotation"],["Live Demo","Schedule Demo"]];
+var items = DEFAULTS.map(function (a) { return { l: a[0], v: a[1] }; });
+var adminItems = [];
+var ta = document.getElementById("r"), cw = document.getElementById("chips");
+function split() { return ta.value.split(",").map(function (s) { return s.trim(); }).filter(Boolean); }
+function renderChips() {
+  cw.innerHTML = "";
+  var now = split();
+  items.forEach(function (it) {
+    var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = it.l;
+    if (now.indexOf(it.v) > -1) b.classList.add("active");
+    b.onclick = function () {
+      var cur = split(), i = cur.indexOf(it.v);
+      if (i > -1) { cur.splice(i, 1); b.classList.remove("active"); } else { cur.push(it.v); b.classList.add("active"); }
+      ta.value = cur.join(", ");
+    };
+    cw.appendChild(b);
+  });
+}
+renderChips();
+// options managed by admin are stored in Firestore (booth_settings/options)
+if (db) getDoc(doc(db, "booth_settings", "options")).then(function (s) {
+  if (s.exists() && s.data().items && s.data().items.length) { items = s.data().items; renderChips(); }
+  if (unlocked) { adminItems = items.map(function (x) { return { l: x.l, v: x.v }; }); renderOpts(); }
+}).catch(function (e) { console.error(e); });
+
+function saveLead(d) {
+  if (!db) return Promise.resolve();
+  var save = addDoc(collection(db, COLLECTION), { name: d.name, contact: d.contact, requirements: d.req, booth: BOOTH, createdAt: serverTimestamp() });
+  var wait = new Promise(function (res) { setTimeout(res, 1500); });
+  return Promise.race([save, wait]).catch(function (e) { console.error(e); });
+}
+
+var form = document.getElementById("f"), btn = document.getElementById("go");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  var name = document.getElementById("n").value.trim(), contact = document.getElementById("c").value.trim(), req = ta.value.trim(), ok = true;
+  function se(id, bad, m) { document.getElementById(id).textContent = bad ? m : ""; if (bad) ok = false; }
+  se("e1", !name, "Enter your name."); se("e2", contact.replace(/\D/g, "").length < 7, "Enter a valid contact number."); se("e3", !req, "Tell us what you need.");
+  if (!ok) return;
+
+  var msg = "Hello, I visited " + BOOTH + ".\n\nName: " + name + "\nContact: " + contact + "\nRequirements: " + req;
+  var t = encodeURIComponent(msg), ua = navigator.userAgent;
+  var url = "https://wa.me/" + NUM + "?text=" + t;
+  var isAnd = /Android/i.test(ua), isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var fl = document.getElementById("fl"); fl.href = url;
+  var w = (!isAnd && !isIOS) ? window.open("about:blank", "_blank") : null; // open now so desktop pop-up blockers allow it
+  btn.disabled = true;
+
+  saveLead({ name: name, contact: contact, req: req }).then(function () {
+    btn.disabled = false;
+    document.getElementById("fb").style.display = "block";
+    if (isAnd) location.href = "whatsapp://send?phone=" + NUM + "&text=" + t;
+    else if (isIOS) location.href = url;
+    else if (w) w.location.href = "https://web.whatsapp.com/send?phone=" + NUM + "&text=" + t;
+  });
+});
+
+// ---------- Settings: QR code + admin Excel download ----------
+var $ = function (i) { return document.getElementById(i); };
+var panel = $("panel");
+$("qrurl").value = location.origin + location.pathname;
+function formUrl() {
+  var u = $("qrurl").value.trim() || (location.origin + location.pathname), b = $("qrbooth").value.trim();
+  if (b) u += (u.indexOf("?") > -1 ? "&" : "?") + "booth=" + encodeURIComponent(b);
+  return u;
+}
+function buildQR() {
+  var box = $("qrbox"); box.innerHTML = "";
+  new QRCode(box, { text: formUrl(), width: 240, height: 240, colorDark: "#14161a", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+}
+$("gear").onclick = function () { panel.classList.add("open"); buildQR(); };
+$("close").onclick = function () { panel.classList.remove("open"); };
+panel.addEventListener("click", function (e) { if (e.target === panel) panel.classList.remove("open"); });
+$("qrmake").onclick = buildQR;
+$("qrdl").onclick = function () {
+  var c = $("qrbox").querySelector("canvas"); if (!c) return;
+  var p = 40, o = document.createElement("canvas"); o.width = c.width + p * 2; o.height = c.height + p * 2;
+  var x = o.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, o.width, o.height); x.drawImage(c, p, p);
+  var a = document.createElement("a"); a.download = "booth-form-qr.png"; a.href = o.toDataURL("image/png"); a.click();
+};
+// ---- Admin login: change these two lines to set the username and password ----
+var ADMIN_USER = "admin", ADMIN_PASS = "Tillmax@2026";
+var ADMIN_DOMAIN = "tillmax.admin"; // the same login must also exist in Firebase Authentication as admin@tillmax.admin
+var unlocked = false;
+function showAdmin(on) {
+  unlocked = on;
+  $("login").style.display = on ? "none" : "block";
+  $("admin").style.display = on ? "block" : "none";
+  $("who").textContent = on ? ADMIN_USER : "";
+  if (on) { adminItems = items.map(function (x) { return { l: x.l, v: x.v }; }); renderOpts(); }
+}
+function doSignIn() {
+  $("autherr").textContent = "";
+  if ($("em").value.trim().toLowerCase() !== ADMIN_USER.toLowerCase() || $("pw").value !== ADMIN_PASS) { $("autherr").textContent = "Wrong username or password."; return; }
+  $("pw").value = "";
+  showAdmin(true);
+  if (!auth) return;
+  var em = ADMIN_USER + "@" + ADMIN_DOMAIN, xm = $("xlmsg");
+  xm.textContent = "Connecting to database...";
+  signInWithEmailAndPassword(auth, em, ADMIN_PASS).then(function () { xm.textContent = ""; }).catch(function (e) {
+    var c = e && e.code || "";
+    if (c === "auth/operation-not-allowed") { xm.textContent = "Enable Email/Password in Firebase Console > Authentication > Sign-in method, then sign in again."; return; }
+    // first run: the database login does not exist yet, so create it automatically
+    createUserWithEmailAndPassword(auth, em, ADMIN_PASS).then(function () { xm.textContent = ""; }).catch(function (e2) {
+      console.error(e2); var c2 = e2 && e2.code || "";
+      xm.textContent = c2 === "auth/email-already-in-use" ? "The Firebase login " + em + " already exists with a different password. Reset its password in Firebase Console to match ADMIN_PASS."
+        : c2 === "auth/operation-not-allowed" ? "Enable Email/Password in Firebase Console > Authentication > Sign-in method, then sign in again."
+        : "Database login failed (" + c2 + ").";
+    });
+  });
+}
+$("signin").onclick = doSignIn;
+$("pw").addEventListener("keydown", function (e) { if (e.key === "Enter") doSignIn(); });
+$("signout").onclick = function () { if (auth) signOut(auth); showAdmin(false); $("xlmsg").textContent = ""; $("mmsg").textContent = ""; $("optmsg").textContent = ""; };
+$("xl").onclick = function () {
+  var m = $("xlmsg"); m.textContent = "Loading...";
+  getDocs(query(collection(db, COLLECTION), orderBy("createdAt", "desc"))).then(function (snap) {
+    var rows = [];
+    snap.forEach(function (d) {
+      var v = d.data(), t = v.createdAt && v.createdAt.toDate ? v.createdAt.toDate() : null;
+      rows.push({ "Date & Time": t ? t.toLocaleString() : "", "Name": v.name || "", "Contact": v.contact || "", "Requirements": v.requirements || "", "Booth": v.booth || "" });
+    });
+    if (!rows.length) { m.textContent = "No enquiries yet."; return; }
+    var ws = XLSX.utils.json_to_sheet(rows); ws["!cols"] = [{ wch: 20 }, { wch: 24 }, { wch: 18 }, { wch: 50 }, { wch: 22 }];
+    var wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Enquiries");
+    XLSX.writeFile(wb, "booth-enquiries-" + new Date().toISOString().slice(0, 10) + ".xlsx");
+    m.textContent = rows.length + " enquiries downloaded.";
+  }).catch(function (e) { console.error(e); m.textContent = "Could not load. This account may not be allowed to read enquiries (check the Firestore rules)."; });
+};
+
+// ---------- Admin: add customer manually ----------
+$("madd").onclick = function () {
+  var m = $("mmsg"), n = $("mn").value.trim(), c = $("mc").value.trim(), r = $("mr").value.trim();
+  if (!n || c.replace(/\D/g, "").length < 7) { m.textContent = "Enter the name and a valid contact number."; return; }
+  m.textContent = "Saving...";
+  addDoc(collection(db, COLLECTION), { name: n, contact: c, requirements: r, booth: $("mb").value.trim() || "Added by admin", createdAt: serverTimestamp() })
+    .then(function () { m.textContent = "Customer added."; ["mn", "mc", "mr", "mb"].forEach(function (i) { $(i).value = ""; }); })
+    .catch(function (e) { console.error(e); m.textContent = "Could not save. Check the Firestore rules."; });
+};
+
+// ---------- Admin: manage requirement options ----------
+function renderOpts() {
+  var box = $("optlist"); box.innerHTML = "";
+  adminItems.forEach(function (it, i) {
+    var d = document.createElement("div"); d.className = "optrow";
+    var s = document.createElement("span"); s.textContent = it.l;
+    var b = document.createElement("button"); b.type = "button"; b.textContent = "\u00d7"; b.setAttribute("aria-label", "Remove " + it.l);
+    b.onclick = function () { adminItems.splice(i, 1); renderOpts(); };
+    d.appendChild(s); d.appendChild(b); box.appendChild(d);
+  });
+}
+$("optadd").onclick = function () {
+  var t = $("optnew").value.trim(); if (!t) return;
+  adminItems.push({ l: t, v: t }); $("optnew").value = ""; renderOpts(); $("optmsg").textContent = "Tap Save options to publish.";
+};
+$("optsave").onclick = function () {
+  var m = $("optmsg"); m.textContent = "Saving...";
+  setDoc(doc(db, "booth_settings", "options"), { items: adminItems })
+    .then(function () { items = adminItems.map(function (x) { return { l: x.l, v: x.v }; }); renderChips(); m.textContent = "Saved. The form now shows these options."; })
+    .catch(function (e) { console.error(e); m.textContent = "Could not save. Check the Firestore rules."; });
+};
+</script>
+</body>
+</html>
