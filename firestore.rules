@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Customer enquiries
+    match /booth_leads/{id} {
+      // Visitors can submit the form, with basic size checks
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.name.size() <= 100
+                    && request.resource.data.contact is string
+                    && request.resource.data.contact.size() <= 40
+                    && request.resource.data.requirements is string
+                    && request.resource.data.requirements.size() <= 1000;
+
+      // Only the admin account can read, edit or delete
+      allow read, update, delete: if request.auth != null
+                    && request.auth.token.email == 'admin@tillmax.admin';
+    }
+
+    // Requirement option buttons shown on the form
+    match /booth_settings/{id} {
+      allow read: if true;
+      allow write: if request.auth != null
+                    && request.auth.token.email == 'admin@tillmax.admin';
+    }
+  }
+}
